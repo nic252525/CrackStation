@@ -27,7 +27,6 @@ let package = Package(
             ],
             resources: [
                 .process("data.json"),
-                .process("Project-BridgingHeader.h")
             ]),
         .testTarget(
             name: "CrackStationTests",

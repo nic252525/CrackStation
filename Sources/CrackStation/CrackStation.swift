@@ -91,7 +91,7 @@ public struct CrackStation : Decrypter {
     // Sample usage:
     //  `crack(86f7e437faa5a7fce15d1ddcb9eaeaea377667b8)` would return `a`.
     //   `crack(77de68daecd823babbb58edb1c8e14d7106e83bb)` would return `3`.
-    public fuc decrypt(shaHash: String) -> String? {
+    public func decrypt(shaHash: String) -> String? {
 
         if let lookupTable = try? CrackStation.loadDictionaryFromDisk() {
             if let crackedcode : String = lookupTable[shaHash] {

@@ -44,7 +44,6 @@ public struct CrackStation : Decrypter {
             // Get the file path and create file
             // let filePath = "/code/CrackStation/Source/CrackStation/singleChardata.json"
             // let fileURL = URL(string: filePath)
-
             let directoryPath = FileManager.default.urls(for: .userDirectory, in: .localDomainMask)
             let fileURL = directoryPath[0].appendingPathComponent("singleChardata.json")
             // print("SHOW SAVE URL", fileURL)
@@ -71,6 +70,7 @@ public struct CrackStation : Decrypter {
         }
     }
 
+
             
     static func loadDictionaryFromDisk() throws -> [String : String] {
 
@@ -95,7 +95,7 @@ public struct CrackStation : Decrypter {
 
         if let lookupTable = try? CrackStation.loadDictionaryFromDisk() {
             if let crackedcode : String = lookupTable[shaHash] {
-                print("You password is successfully cracked!")
+                // print("You password is successfully cracked!")
                 return crackedcode
             } else {print("Unable to crack.")
                 return nil}

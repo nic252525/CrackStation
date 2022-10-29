@@ -29,6 +29,7 @@ public struct CrackStation : Decrypter {
                 let output = Insecure.SHA1.hash(data: inputData)
                 let outputHex = output.map { String(format: "%02x", $0) }.joined()
                 hashArr[outputHex] = i+j
+            }
         }
         return hashArr
     }

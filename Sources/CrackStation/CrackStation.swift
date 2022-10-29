@@ -19,14 +19,16 @@ public struct CrackStation : Decrypter {
         let letters = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K",
         "L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j",
         "k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        let emptyString = [""] + letters
 
         // Input: a string.
         // Output: the string encrypted using the SHA-1 algorithm.
-        for i in letters {
-            let inputData = Data(i.utf8)
-            let output = Insecure.SHA1.hash(data: inputData)
-            let outputHex = output.map { String(format: "%02x", $0) }.joined()
-            hashArr[outputHex] = i
+        for i in emptyString {
+            for j in letters {
+                let inputData = Data((i+j).utf8)
+                let output = Insecure.SHA1.hash(data: inputData)
+                let outputHex = output.map { String(format: "%02x", $0) }.joined()
+                hashArr[outputHex] = i+j
         }
         return hashArr
     }
@@ -45,9 +47,9 @@ public struct CrackStation : Decrypter {
             // let filePath = "/code/CrackStation/Source/CrackStation/singleChardata.json"
             // let fileURL = URL(string: filePath)
             let directoryPath = FileManager.default.urls(for: .userDirectory, in: .localDomainMask)
-            let fileURL = directoryPath[0].appendingPathComponent("singleChardata.json")
-            // print("SHOW SAVE URL", fileURL)
-            // print("SHOW SAVE PATH", fileURL.path)
+            let fileURL = directoryPath[0].appendingPathComponent("twoChardata.json")
+            print("SHOW SAVE URL", fileURL)
+            print("SHOW SAVE PATH", fileURL.path)
             
             if !FileManager.default.fileExists(atPath: fileURL.path) {
                 let created = FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)

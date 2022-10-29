@@ -13,7 +13,7 @@ final class CrackStationTests: XCTestCase {
         } else {
             arrLength = 0
         }
-        XCTAssertEqual(arrLength, 62)
+        XCTAssertEqual(arrLength, 3906)
     }
 
 
@@ -21,7 +21,7 @@ final class CrackStationTests: XCTestCase {
         //When
         CrackStation().jsonSaver()
         let directoryPath = FileManager.default.urls(for: .userDirectory, in: .localDomainMask)
-        let fileURL = directoryPath[0].appendingPathComponent("singleChardata.json")
+        let fileURL = directoryPath[0].appendingPathComponent("twoChardata.json")
         // let fileURL = URL(fileURLWithPath: "file:///code/CrackStation/Source/CrackStation/singleChardata.json")
         // let filePath = "/code/CrackStation/Source/CrackStation/singleChardata.json"
         // let fileURL = URL(string: filePath)
@@ -52,12 +52,22 @@ final class CrackStationTests: XCTestCase {
 
 
 
-    func testDecrypt() {
+    func testSingleDecrypt() {
         //When
         let cracked = CrackStation().decrypt(shaHash: "e2415cb7f63df0c9de23362326ad3c37a9adfc96")
         
         //Then
         XCTAssertEqual(cracked, "W")
+
+        }
+
+
+    func testTwoDecrypt() {
+        //When
+        let cracked = CrackStation().decrypt(shaHash: "4197f5d83381787bd4639867c8997940a24a0832")
+        
+        //Then
+        XCTAssertEqual(cracked, "p5")
 
         }
 }

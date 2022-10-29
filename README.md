@@ -14,14 +14,14 @@ This project uses a swift package to realize the function of decrypting the plai
 * Swift
 * IDE
     * Mac: Xcode
-    * Windows 10: Docker desktop(https://docs.docker.com/desktop/install/windows-install/)
+    * Windows 10: Docker desktop(https://docs.docker.com/desktop/install/windows-install/)<br />
                   Visual Studio Code(https://code.visualstudio.com/Download)
 * Terminal
-    Git Bash/ PowerShell/ Cmd
+    * Git Bash/ PowerShell/ Cmd
 
 ### Executing program
 
-* Clone the program
+* Clone the program<br />
 In terminal, create a directory on you local machine. Change to the directory, clone our repository to your directory.
 ```
 mkdir your-dictionary
@@ -29,11 +29,11 @@ cd your-dictionary
 git clone git@github.com:nic252525/CrackStation.git
 ```
 
-* Generate a lookup table
+* Generate a lookup table<br />
 Two ways to generate a lookup table. The first is to run hashGenerator.py in Sources/CrackStation to generate a data.json in the same directory.
 The second is to call CrackStation().JsonSaver() to generate a data.json in your user Directory, then manually copy it to the Sources/CrackStation. Don't recommend using it.
 
-* Build and test the package
+* Build and test the package<br />
 Change to CrackStation directory, run test command to build and test the swift package.
 ```
 swift test
@@ -48,11 +48,9 @@ Yun Han
 
 * 2.0.0
     * Updates for POC v2: crack any password up to two characters in length, which (a) matches the regular expression[A-Za-z0-9]{1,2} and (b) is encrypted using SHA-1.
-    * See [tag history](2.0.0)
 
 * 1.0.0
     * Release for POC v1: crack crack any single-character password, which (a) matches the regular expression [A-Za-z0-9] and (b) is encrypted using SHA-1.
-    * See [tag history](1.0.0)
 
 * 0.1.1
     * Initial Release

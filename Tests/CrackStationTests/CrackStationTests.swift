@@ -4,37 +4,6 @@ import XCTest
 final class CrackStationTests: XCTestCase {
 
 
-    func testHashGenerator() throws {
-        var arrLength : Int
-        //When
-        let hashArr = try CrackStation().hashGenerator()
-        if let arr : [String : String] = hashArr as? [String : String] {
-            arrLength = arr.count
-        } else {
-            arrLength = 0
-        }
-        XCTAssertEqual(arrLength, 3906)
-    }
-
-
-    func testJsonSaver() throws {
-        //When
-        CrackStation().jsonSaver()
-        let directoryPath = FileManager.default.urls(for: .userDirectory, in: .localDomainMask)
-        let fileURL = directoryPath[0].appendingPathComponent("twoChardata.json")
-        // let fileURL = URL(fileURLWithPath: "file:///code/CrackStation/Source/CrackStation/singleChardata.json")
-        // let filePath = "/code/CrackStation/Source/CrackStation/singleChardata.json"
-        // let fileURL = URL(string: filePath)
-        // let fileURL = localDictionary.appendingPathComponent("singleChardata.json")
-        // let fileURL = directoryPath[0].appendingPathComponent("singleChardata.json")
-        print("SHOW TEST PATH", fileURL.path)
-        let fileExist = FileManager.default.fileExists(atPath: fileURL.path)
-
-        // Then
-        XCTAssertEqual(fileExist, true)
-    }
-
-
     func testLoadingLookupTableFromDisk() throws {
         //when
         let lookupTable = try CrackStation.loadDictionaryFromDisk()
@@ -68,6 +37,16 @@ final class CrackStationTests: XCTestCase {
         
         //Then
         XCTAssertEqual(cracked, "p5")
+
+        }
+
+
+    func testThreeDecrypt() {
+        //When
+        let cracked = CrackStation().decrypt(shaHash: "995062103455c09e884100c710b9f517ee3dfeda73d82b096de623df7e59a76f")
+        
+        //Then
+        XCTAssertEqual(cracked, "a?J")
 
         }
 }

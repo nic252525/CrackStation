@@ -16,11 +16,6 @@ final class CrackStationTests: XCTestCase {
 
 
 
-    //     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, ///.applicationSupportDirectory///.userDirectory .userDomainMask, true)[0] as String
-
-
-
-
     func testSingleDecrypt() {
         //When
         let cracked = CrackStation().decrypt(shaHash: "e2415cb7f63df0c9de23362326ad3c37a9adfc96")
